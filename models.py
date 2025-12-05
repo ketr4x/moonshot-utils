@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from sqlalchemy import Column, String, Integer, DateTime, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+load_dotenv()
 Base = declarative_base()
 
 class Item(Base):

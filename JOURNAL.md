@@ -16,3 +16,8 @@
 - I have installed all the required software for React.
 - Then, I have created the Flask server and React client and created the repository.
 - Lastly, I published the repository to GitHub.
+
+## Journal Entry #3 - 05.12.2025 - 0.3h
+- I have made an app on HackClub Slack called Moonshot Shop Tracker.
+- I have added a webhook to the app.
+- Tested the functionality.

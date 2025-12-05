@@ -2,11 +2,11 @@ import datetime
 import requests
 from models import get_session, Item, PriceHistory
 from dotenv import load_dotenv
-import utils
+from utils import read_config
 import os
 
 load_dotenv()
-url = utils.read_config("ENDPOINT_URL")
+url = read_config("ENDPOINT_URL")
 slack_webhook_url = os.environ.get("SLACK_WEBHOOK_URL")
 moonshot_cookie = os.environ.get("MOONSHOT_COOKIE")
 if moonshot_cookie:

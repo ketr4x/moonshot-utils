@@ -1,8 +1,17 @@
 # Moonshot Utils
 ![Hackatime Badge](https://hackatime-badge.hackclub.com/U08RQEP53HA/moonshot-utils?label=Project%20time)
 ## Features
-- 
+- Post price updates on Slack
+- Post new products on Slack
+
 ## Installation
+### HackClub Slack
+- Go to https://hackclub.com/slack/ and create an account.
+- Proceed to [#moonshot-shop-tracker](https://hackclub.enterprise.slack.com/archives/C0A1SS6TVGV).
+
+## Planned updates
+- A React website
+- Continue the development
 
 ## License
 Copyright ketr4x, 2025. Licensed under BSD-3-Clause License.

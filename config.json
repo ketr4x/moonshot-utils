@@ -1,3 +1,4 @@
 {
-  "ENDPOINT_URL": "https://moonshot.hackclub.com/api/launchpad/shop/items"
+  "ENDPOINT_URL": "https://moonshot.hackclub.com/api/launchpad/shop/items",
+  "CHECK_INTERVAL": "3"
 }
