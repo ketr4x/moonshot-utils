@@ -37,7 +37,7 @@ def get_history(item_id):
     db_session = get_session()
     try:
         history = db_session.query(PriceHistory).filter_by(item_id=item_id).order_by(PriceHistory.timestamp).all()
-        data =[
+        data = [
             {
                 "price": entry.price,
                 "timestamp": entry.timestamp.isoformat()

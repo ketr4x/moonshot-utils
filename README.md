@@ -9,6 +9,9 @@
 - Go to https://hackclub.com/slack/ and create an account.
 - Proceed to [#moonshot-shop-tracker](https://hackclub.enterprise.slack.com/archives/C0A1SS6TVGV).
 
+### Custom
+- Add SLACK_WEBHOOK_URL and MOONSHOT_COOKIE to .env file
+
 ## Planned updates
 - A React website
 - Continue the development
