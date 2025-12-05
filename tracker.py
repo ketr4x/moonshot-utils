@@ -72,7 +72,7 @@ def check_shop():
                         )
                         send_slack(message)
                         print(message)
-            session.commit()
+        session.commit()
     except Exception:
         raise
     finally:
