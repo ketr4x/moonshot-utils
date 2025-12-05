@@ -1,4 +1,5 @@
 # Moonshot Utils
+![Hackatime Badge](https://hackatime-badge.hackclub.com/U08RQEP53HA/moonshot-utils?label=Project%20time)
 ## Features
 - 
 ## Installation
