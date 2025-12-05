@@ -40,7 +40,9 @@ def check_shop():
             db_item = session.query(Item).filter_by(id=item_id).first()
 
             if not db_item:
-                send_slack(f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price}{f"\nOn Sale! Discount: {discount}%" if discount and discount > 0 else ''}")
+                message = f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price}{f"\nOn Sale! Discount: {discount}%" if discount and discount > 0 else ''}"
+                send_slack(message)
+                print(message)
                 new_item = Item(id=item_id, name=name, price=current_price, last_updated=now)
                 session.add(new_item)
                 history = PriceHistory(item_id=item_id, price=current_price, timestamp=now)
@@ -53,19 +55,23 @@ def check_shop():
                     history = PriceHistory(item_id=item_id, price=current_price, timestamp=now)
                     session.add(history)
                     if current_price > old_price:
-                        send_slack(
+                        message = (
                             "*Price Change: 📈 UP*\n"
                             f"Item: {name}\n"
                             f"Old Price: {old_price} stardust ({old_price / 256:.2f}h) -> New Price: {current_price} stardust ({current_price / 256:.2f}h)\n"
                             f"Increase Percentage: {abs(((current_price - old_price) / old_price) * 100):.2f}%"
                         )
+                        send_slack(message)
+                        print(message)
                     else:
-                        send_slack(
+                        message = (
                             "*Price Change: 📉 DOWN*\n"
                             f"Item: {name}\n"
                             f"Old Price: {old_price} stardust ({old_price / 256:.2f}h) -> New Price: {current_price} stardust ({current_price / 256:.2f}h)\n"
                             f"Discount Percentage: {abs(discount if discount and discount > 0 else ((current_price - old_price) / old_price) * 100):.2f}%"
                         )
+                        send_slack(message)
+                        print(message)
             session.commit()
     except Exception:
         raise
