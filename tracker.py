@@ -40,7 +40,7 @@ def check_shop():
             db_item = session.query(Item).filter_by(id=item_id).first()
 
             if not db_item:
-                send_slack(f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price}{f"\nOn Sale! Discount: {discount}%" if discount > 0 else ((current_price - db_item.price) / db_item.price) * 100 if db_item.price != 0 else ''}")
+                send_slack(f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price}{f"\nOn Sale! Discount: {discount}%" if discount and discount > 0 else ''}")
                 new_item = Item(id=item_id, name=name, price=current_price, last_updated=now)
                 session.add(new_item)
                 history = PriceHistory(item_id=item_id, price=current_price, timestamp=now)
@@ -56,15 +56,15 @@ def check_shop():
                         send_slack(
                             "*Price Change: 📈 UP*\n"
                             f"Item: {name}\n"
-                            f"Old Price: {old_price} -> New Price: {current_price}"
-                            f"Price Increase Percentage: {((current_price - old_price) / old_price) * 100}%"
+                            f"Old Price: {old_price} stardust ({old_price / 256:.2f}h) -> New Price: {current_price} stardust ({current_price / 256:.2f}h)\n"
+                            f"Increase Percentage: {abs(((current_price - old_price) / old_price) * 100):.2f}%"
                         )
                     else:
                         send_slack(
                             "*Price Change: 📉 DOWN*\n"
                             f"Item: {name}\n"
-                            f"Old Price: {old_price} -> New Price: {current_price}"
-                            f"Discount Percentage: {discount if discount > 0 else ((current_price - old_price) / old_price) * 100}%"
+                            f"Old Price: {old_price} stardust ({old_price / 256:.2f}h) -> New Price: {current_price} stardust ({current_price / 256:.2f}h)\n"
+                            f"Discount Percentage: {abs(discount if discount and discount > 0 else ((current_price - old_price) / old_price) * 100):.2f}%"
                         )
             session.commit()
     except Exception:
