@@ -21,3 +21,12 @@
 - I have made an app on HackClub Slack called Moonshot Shop Tracker.
 - I have added a webhook to the app.
 - Tested the functionality.
+
+## Journal Entry #4 - 05.12.2025 - 0.4h
+- I have created an app on heroku as well as db for it.
+- I have added the environment variables.
+- I have successfully deployed the app to heroku.
+
+## Journal Entry #5 - 05.12.2025 - 0.2h
+- I have added a subdomain `moonshot.ketrax.ovh`
+- Made the subdomain point to the heroku deployment.

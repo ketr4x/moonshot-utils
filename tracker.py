@@ -40,7 +40,7 @@ def check_shop():
             db_item = session.query(Item).filter_by(id=item_id).first()
 
             if not db_item:
-                message = f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price}{f"\nOn Sale! Discount: {discount}%" if discount and discount > 0 else ''}"
+                message = f"✨ *New Item Detected*\nItem: {name}\nCurrent Price: {current_price} stardust ({current_price / 256:.2f}h){f"\nOn Sale! Discount: {discount}%" if discount and discount > 0 else ''}"
                 send_slack(message)
                 print(message)
                 new_item = Item(id=item_id, name=name, price=current_price, last_updated=now)

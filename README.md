@@ -15,6 +15,7 @@
 ## Planned updates
 - A React website
 - Continue the development
+- SLACK: add the lowest price check
 
 ## License
 Copyright ketr4x, 2025. Licensed under BSD-3-Clause License.

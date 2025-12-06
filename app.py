@@ -1,5 +1,6 @@
 import atexit
-from flask import Flask, jsonify
+import os.path
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
 from models import get_session, Item, PriceHistory
@@ -47,6 +48,16 @@ def get_history(item_id):
         return jsonify(data)
     finally:
         db_session.close()
+
+@app.route('/')
+@app.route('/<path:path>')
+def serve(path=''):
+    if path and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    if os.path.exists(app.static_folder + '/index.html'):
+        return send_from_directory(app.static_folder, 'index.html')
+    else:
+        return "React app not built yet."
 
 if __name__ == '__main__':
     app.run(debug=True)
